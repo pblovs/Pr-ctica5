@@ -2,10 +2,10 @@
 #include <stdlib.h>
 
 float promedio_semana(float a[10]){ //Calcula el promedio de la temperatura de la semana
-	
-	float total = (a[1] + a[2] + a[3] + a[4] + a[5] + a[6] + a[7]) /7; 
-	
-	return total;
+	float promedio = 0;
+	for (int i = 0; i<7; i++)
+		promedio = promedio + a[i];
+	promedio = promedio / 7;
 }
 
 float temperatura_max(float a[10]){ //Calcula la temperatura máxima de la semana
