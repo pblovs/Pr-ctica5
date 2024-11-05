@@ -1,11 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
-struct dias{
-	float temperatura;
-	char nombre[10];
-};
 
 float promedio_semana(float a[10]){ //Calcula el promedio de la temperatura de la semana
 	float suma = 0;
@@ -23,7 +17,7 @@ float temperatura_max(float a[10]){ //Calcula la temperatura máxima de la seman
 			max = a[i];
 		}
 	}
-	return max;
+	printf("Temperatura máxima: %.1fºC\n", max);
 }
 
 float temperatura_min(float a[10]){//Calcula la temperatura mínima de la semana
@@ -33,7 +27,7 @@ float temperatura_min(float a[10]){//Calcula la temperatura mínima de la semana
 			min = a[i];
 		}
 	}
-	return min;
+	printf("Temperatura mínima: %.1fºC\n", min);
 }
 
 int contador_dias(float a[10]){
@@ -57,35 +51,21 @@ float listado_dias(float a[10]){
 
 int main(){
 
-	struct dias semana[7];
+	float array[10];
+        char Dias[10] = "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo";	
+	
+		for (int i = 0; i < 7; i++){
+		
+			printf("Ingresa el promedio de la temperatura de cada dia: ");
+			scanf("%f", &array[i]);
 
-	strcpy(semana[0].nombre, "Lunes");
-	strcpy(semana[1].nombre, "Martes");
-	strcpy(semana[2].nombre, "Miércoles");
-	strcpy(semana[3].nombre, "Jueves");
-	strcpy(semana[4].nombre, "Viernes");
-	strcpy(semana[5].nombre, "Sábado");
-	strcpy(semana[6].nombre, "Domingo");
-
-	for (int i=0; i<7; i++){
-		printf("Temperatura media del %s: ", semana[i].nombre);
-		scanf(" %1f", &semana[i].temperatura);
 	}
-
-	float temperaturas[10];
-	for (int i=0; i<7; i++){
-		temperaturas[i] = semana[i].temperatura;
-	}
-
-
-	float media = promedio_semana(temperaturas);
+	float media = promedio_semana(array);
 	printf("La temperatura media de la semana es: %.1fºC\n", media);
-	printf("Temperatura máxima: %.1fºC\n", temperatura_max(temperaturas));
-	printf("Temperatura mínima: %.1fºC\n", temperatura_min(temperaturas));
-	int dias = contador_dias(temperaturas);
+	temperatura_max(array);
+	temperatura_min(array);
+	int dias = contador_dias(array);
 	printf("Hay %d dia(s) superiores a la media.\n", dias);
-	listado_dias(temperaturas);
-
-	return 0;
+	listado_dias(array);
 
 }
