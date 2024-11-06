@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define BAJA_EX 5
 
 struct tienda{
 	char nombre[20];
@@ -31,7 +32,7 @@ int main(){
 
 	while (1) {
 
-		printf("¿Desea reabastecer algún producto? (1 = si, 0 = no): ");
+		printf("\n¿Desea reabastecer algún producto? (1 = si, 0 = no): ");
 		int respuesta;
 		scanf("%d", &respuesta);
 
@@ -44,7 +45,7 @@ int main(){
 			printf("Ingrese el nombre del producto a reabastecr: ");
 			scanf("%s", nombre_buscado);
 
-			for (int i = 0; i < cant; i++) {
+			for (int i=0; i<cant; i++) {
 				if (strcmp(productos[i].nombre, nombre_buscado) == 0) {
 					printf("Cantidad a añadir: ");
 					scanf("%d", &cantidad_añadida);
@@ -53,5 +54,22 @@ int main(){
 				}
 			}
 		}
+	}
+	
+	printf("\nProductos en baja existencia:\n");
+	for (int i=0; i<cant; i++){
+		if (productos[i].stock < BAJA_EX){
+			printf("%s - %d unidades\n", productos[i].nombre, productos[i].stock);
+		}
+	}
+	
+	printf("\nIntroduce el nombre del producto a buscar: ");
+	scanf("%s", nombre_buscado);
+	for (int i=0; i<cant; i++) {
+		if (strcmp(productos[i].nombre, nombre_buscado) == 0) 
+			printf("Hay %d de %s.\n", productos[i].stock, productos[i].nombre);
+		else 
+			printf("Producto no encontrado\n");
+		
 	}
 }
