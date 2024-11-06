@@ -26,5 +26,32 @@ int main(){
 		printf("Hay %d unidades de %s\n", productos[i].stock, productos[i].nombre);
 	}
 
-	
+	char nombre_buscado[20];
+	int cantidad_añadida;
+
+	while (1) {
+
+		printf("¿Desea reabastecer algún producto? (1 = si, 0 = no): ");
+		int respuesta;
+		scanf("%d", &respuesta);
+
+		if (respuesta == 0) {
+			break;
+		}
+
+		else {
+
+			printf("Ingrese el nombre del producto a reabastecr: ");
+			scanf("%s", nombre_buscado);
+
+			for (int i = 0; i < cant; i++) {
+				if (strcmp(productos[i].nombre, nombre_buscado) == 0) {
+					printf("Cantidad a añadir: ");
+					scanf("%d", &cantidad_añadida);
+					productos[i].stock += cantidad_añadida;
+					printf("Ahora hay %d de %s.\n", productos[i].stock, productos[i].nombre);
+				}
+			}
+		}
+	}
 }
