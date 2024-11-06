@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int main(){
 char letra = 'a';
@@ -12,22 +13,25 @@ char lista_palabras[8][100] = {
 "Arma",
 "Pedro",
 "Vim",
-"Ordenador",
+"PC",
 "Silla",
 "Ballena"
 
 };
 	for(int i = 0; i < 8; i++){
 
-		for (int j = 0; j < 8; j++){
+	int longitud = strlen(lista_palabras[i]);
+
+		for (int j = 0; j < longitud; j++){
 			
 			if(lista_palabras[i][j] == letra){
-				
+						
+				encontrado = encontrado - letra;
+				lista_palabras[i][j] += encontrado;
 				break;
-
 			}
+			continue;
 		}
-
 		printf("Las palabras sin la letra a son: %s\n", lista_palabras[i]);
 	}
 
