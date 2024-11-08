@@ -31,31 +31,6 @@ int main(){
 		printf("Hay %d unidades de %s\n", productos[i].stock, productos[i].nombre);
 	}
 	
-	while(1){
-
-		int respuesta;
-		printf("¿Desea reabastecer algún producto?\n");
-		printf("Si = 1, No = 0\n");
-		scanf("%d", &respuesta);
-
-		if (respuesta == 0){
-			break;
-		}
-		else {
-			cant++;
-			printf("Introduce el nombre del nuevo producto: ");
-			scanf("%s", productos[cant].nombre);
-			printf("Stock: ");
-			scanf("%d", &productos[cant].stock);
-		}
-	}
-
-	for (int i=0; i<cant; i++){ 
-		printf("Hay %d unidades de %s\n", productos[i].stock,productos[i].nombre);
-	}
-			
-
-
 	char nombre_buscado[20];
 	int cantidad_añadida;
 
@@ -85,10 +60,9 @@ int main(){
 		}
 	}
 	
-	printf("\nProductos en baja existencia:\n");
 	for (int i=0; i<cant; i++){
 		if (productos[i].stock < BAJA_EX){
-			printf("%s - %d unidades\n", productos[i].nombre, productos[i].stock);
+			printf("Hay baja existencia de %s - %d unidades\n", productos[i].nombre, productos[i].stock);
 		}
 	}
 	
@@ -97,8 +71,11 @@ int main(){
 	for (int i=0; i<cant; i++) {
 		if (strcmp(productos[i].nombre, nombre_buscado) == 0) 
 			printf("Hay %d de %s.\n", productos[i].stock, productos[i].nombre);
-		else 
+		else if (strcmp(productos[i].nombre, nombre_buscado) != 0)
 			printf("Producto no encontrado\n");
 		
 	}
+
+	printf("Introduce una cantidad de ventas diaria: ");
+	for (int i=0; i<cant; i++){
 }
