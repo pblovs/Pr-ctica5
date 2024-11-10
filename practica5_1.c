@@ -16,24 +16,24 @@ float promedio_semana(float a[10]){ //Calcula el promedio de la temperatura de l
 	return promedio;
 }
 
-float temperatura_max(float a[10]){ //Calcula la temperatura máxima de la semana
-	float max = a[0];
+int temperatura_max(float a[10]){ //Calcula la temperatura máxima de la semana
+	int imax = 0;
 	for (int i = 1; i < 7; i++){
-		if(a[i] > max){
-			max = a[i];
+		if(a[i] > a[imax]){
+			imax = i;
 		}
 	}
-	return max;
+	return imax;
 }
 
-float temperatura_min(float a[10]){//Calcula la temperatura mínima de la semana
-	float min = a[0];
+int temperatura_min(float a[10]){//Calcula la temperatura mínima de la semana
+	int imin = 0;
 	for (int i = 1; i < 7; i++){
-		if(a[i] < min){
-			min = a[i];
+		if(a[i] < a[imin]){
+			imin = i;
 		}
 	}
-	return min;
+	return imin;
 }
 
 int contador_dias(float a[10]){
@@ -46,11 +46,11 @@ int contador_dias(float a[10]){
 	return contador;
 }
 
-float listado_dias(float a[10]){
+float listado_dias(struct dias semana[], float prom){
 	printf("Dias con temperaturas por debajo del promedio:\n");
 	for (int i = 0; i < 7; i++){
-		if (a[i] < promedio_semana(a)){
-			printf("%.1fºC\n", a[i]);
+		if (semana[i].temperatura < prom){
+			printf("%s - %.1fºC\n", semana[i].nombre, semana[i].temperatura);
 		}
 	}
 }
@@ -69,7 +69,7 @@ int main(){
 
 	for (int i=0; i<7; i++){
 		printf("Temperatura media del %s: ", semana[i].nombre);
-		scanf(" %1f", &semana[i].temperatura);
+		scanf(" %f", &semana[i].temperatura);
 	}
 
 	float temperaturas[10];
@@ -80,11 +80,13 @@ int main(){
 
 	float media = promedio_semana(temperaturas);
 	printf("La temperatura media de la semana es: %.1fºC\n", media);
-	printf("Temperatura máxima: %.1fºC\n", temperatura_max(temperaturas));
-	printf("Temperatura mínima: %.1fºC\n", temperatura_min(temperaturas));
+	int imax = temperatura_max(temperaturas);
+	printf("Temperatura máxima: %.1fºC el dia %s\n", temperaturas[imax], semana[imax].nombre);
+	int imin = temperatura_min(temperaturas);
+	printf("Temperatura mínima: %.1fºC el dia %s\n", temperaturas[imin], semana[imin].nombre);
 	int dias = contador_dias(temperaturas);
-	printf("Hay %d dia(s) superiores a la media.\n", dias);
-	listado_dias(temperaturas);
+	printf("Hay %d dia/s superior/es a la media.\n", dias);
+	listado_dias(semana, media);
 
 	return 0;
 
