@@ -20,14 +20,14 @@ int main(){
 
 	struct tienda productos[10];
 
-	for (int i=0; i<cant; i++){
+	for (int i=0; i<cant; i++){ //guardamos los datos 
 		printf("Introduce el nombre del producto: ");
 		scanf(" %s", productos[i].nombre);
 		printf("Stock: ");
 		scanf(" %d", &productos[i].stock);
 	}
 
-	for (int i=0; i<cant; i++){
+	for (int i=0; i<cant; i++){ //imprime todos los datos
 		printf("Hay %d unidades de %s\n", productos[i].stock, productos[i].nombre);
 	}
 	
@@ -68,14 +68,15 @@ int main(){
 	
 	printf("\nIntroduce el nombre del producto a buscar: ");
 	scanf("%s", nombre_buscado);
+	int encontrado = 0;
 	for (int i=0; i<cant; i++) {
-		if (strcmp(productos[i].nombre, nombre_buscado) == 0) 
-			printf("Hay %d de %s.\n", productos[i].stock, productos[i].nombre);
-		else if (strcmp(productos[i].nombre, nombre_buscado) != 0)
-			printf("Producto no encontrado\n");
-		
+		if (strcmp(productos[i].nombre, nombre_buscado) == 0){ 
+			printf("Hay %d de %s\n", productos[i].stock, productos[i].nombre);
+			encontrado = 1;
+			break;
+		}
 	}
-
-	printf("Introduce una cantidad de ventas diaria: ");
-	for (int i=0; i<cant; i++){
+	if (encontrado == 0){
+		printf("Producto no encontrado\n");
+	}
 }
