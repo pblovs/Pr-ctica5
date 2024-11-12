@@ -18,22 +18,24 @@ char lista_palabras[8][100] = {
 "Ballena"
 
 };
-	for(int i = 0; i < 8; i++){
+	printf("Palabras sin la a: \n");
+	for(int i = 0; i < 8; i++){ //bucle para las palabras
 
-	int longitud = strlen(lista_palabras[i]);
-
-		for (int j = 0; j < longitud; j++){
+		int contador = 0;
+		for (int j = 0; j < strlen(lista_palabras[i]); j++){ //bucle para las letras, strlen te da el numero de letras de la palabra
 			
 			if(lista_palabras[i][j] == letra){
-						
-				encontrado = encontrado - letra;
-				lista_palabras[i][j] += encontrado;
-				break;
+				contador = 1;
+				break; //sale del bucle de letras
 			}
-			continue;
 		}
-		printf("Las palabras sin la letra a son: %s\n", lista_palabras[i]);
+		if (contador == 1){
+			continue; //pasa a la siguiente palabra
+		}
+		else {
+			printf("%s\n", lista_palabras[i]);
+		}
 	}
 
-return EXIT_SUCCESS;
+return 0;
 }
