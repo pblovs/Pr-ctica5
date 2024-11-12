@@ -4,7 +4,6 @@
 
 int main(){
 char letra = 'a';
-int encontrado;
 // Esta fución es la encargada de guardar la lista de las palabras que ya estan definidas, es decir, esta lista esta formada por 8 cadenas [8], las cuales pueden tener 100 caracteres[100].
 char lista_palabras[8][100] = {
 
