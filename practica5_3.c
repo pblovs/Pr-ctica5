@@ -68,13 +68,15 @@ int main(){
 	
 	printf("\nIntroduce el nombre del producto a buscar: ");
 	scanf("%s", nombre_buscado);
-	int encontrado;
+	int encontrado = 0;
 	for (int i=0; i<cant; i++) {
-		if (strcmp(productos[i].nombre, nombre_buscado) != 0){ 
-			encontrado = 0;
-		}
-		else if (strcmp(productos[i].nombre, nombre_buscado) == 0){
+		if (strcmp(productos[i].nombre, nombre_buscado) == 0){ 
+			printf("Hay %d de %s\n", productos[i].stock, productos[i].nombre);
 			encontrado = 1;
+			break;
 		}
+	}
+	if (encontrado == 0){
+		printf("Producto no encontrado\n");
 	}
 }
