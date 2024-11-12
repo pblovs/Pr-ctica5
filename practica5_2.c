@@ -96,7 +96,6 @@ int main(){
 	printf("El número de estudiantes suspensos es: %d\n", num_suspensos(notas, cantidad));
 	printf("La nota máxima es %.1f\n", nota_max(notas, cantidad));
 	printf("La nota minima es %.1f\n", nota_min(notas, cantidad));
-	printf("Notas por encima de la media:\n");
 	notas_promedio(notas, cantidad, media);
 	return EXIT_SUCCESS;
 }
